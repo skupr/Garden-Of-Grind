@@ -1,4 +1,4 @@
-package com.myname.mymodid;
+package com.LazyFlesh.GardenOfGrindMod;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

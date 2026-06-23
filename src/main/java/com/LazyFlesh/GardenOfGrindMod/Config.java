@@ -1,4 +1,4 @@
-package com.myname.mymodid;
+package com.LazyFlesh.GardenOfGrindMod;
 
 import java.io.File;
 
