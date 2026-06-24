@@ -1,0 +1,61 @@
+{
+  "preRequisites:9": {},
+  "properties:10": {
+    "betterquesting:10": {
+      "autoClaim:1": 0,
+      "completion_animation:8": "default",
+      "completion_particle:8": "default",
+      "confetti_icon:10": {
+        "Count:3": 0,
+        "Damage:2": 0,
+        "OreDict:8": "",
+        "id:8": "minecraft:stick"
+      },
+      "countAsQuest:1": 1,
+      "desc:8": "Welcome to the §mJungle§r Void!\n\nSo, you\u0027ve decided to get the GoG addon. That\u0027s good. It\u0027s certainly much more up-to-date than the github wiki we have for GoG progress. \n\nBefore we begin, allow me to explain what this addon does:\n\nOn the whole, it\u0027s an information database, adding pages to the questbook and guideNH so you don\u0027t have to leave the game to find out how to get stuff. \n\nSecondly, it has modes!\n\nMuch like how project ozone has normal, titan, and kappa, this addon has Garden of Grind, Skyblock, Garden of Grindless, and Questless Garden of Grind. The more specific changes for each mode can be found in their quests, but overall, except for Garden of Grind, the modes make some amount of changes to the base GTNH recipes, either to make the game more similar to a normal Skyblock, or to lessen the grind for a normal GoG run. Or just disable quest rewards :p\n\n",
+      "globalShare:1": 0,
+      "icon:10": {
+        "Count:3": 1,
+        "Damage:2": 0,
+        "OreDict:8": "",
+        "id:8": "minecraft:grass"
+      },
+      "isMain:1": 0,
+      "isSilent:1": 0,
+      "lockedProgress:1": 0,
+      "name:8": "It begins...",
+      "notification_duration:5": -1.0,
+      "notification_effect:3": -1,
+      "notification_fade_in:5": -1.0,
+      "notification_fade_out:5": -1.0,
+      "notification_icon_offset_y:3": -2147483648,
+      "notification_icon_scale:5": -1.0,
+      "notification_pos_x:3": -2147483648,
+      "notification_pos_y:3": -2147483648,
+      "notification_show_icon:8": "default",
+      "notification_style:8": "default",
+      "notification_subtitle:8": "",
+      "notification_subtitle_scale:5": -1.0,
+      "notification_title:8": "",
+      "notification_title_scale:5": -1.0,
+      "particle_count:3": -1,
+      "questLogic:8": "AND",
+      "repeatTime:3": -1,
+      "repeat_relative:1": 1,
+      "simultaneous:1": 0,
+      "snd_complete:8": "random.levelup",
+      "snd_update:8": "random.levelup",
+      "taskLogic:8": "AND",
+      "visibility:8": "NORMAL"
+    }
+  },
+  "questIDHigh:4": -659659133410587941,
+  "questIDLow:4": -9127194824648741974,
+  "rewards:9": {},
+  "tasks:9": {
+    "0:10": {
+      "index:3": 0,
+      "taskID:8": "bq_standard:checkbox"
+    }
+  }
+}

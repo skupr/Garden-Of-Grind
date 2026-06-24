@@ -1,36 +1,52 @@
 package com.LazyFlesh.GardenOfGrindMod.ChallengeMode;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
 import com.hfstudio.bqapi.BQApi;
 import com.hfstudio.bqapi.api.builder.Chapters;
-import com.hfstudio.bqapi.api.builder.Quests;
-import com.hfstudio.bqapi.api.builder.RewardBuilders;
-import com.hfstudio.bqapi.api.builder.TaskBuilders;
 import com.hfstudio.bqapi.api.definition.ChapterDefinition;
-import com.hfstudio.bqapi.api.definition.QuestDefinition;
-import com.hfstudio.bqapi.api.definition.QuestPlacementDefinition;
+
+import betterquesting.api.utils.UuidConverter;
 
 public class ModeLoader {
 
-    public void loadQuestbook() {
-        // load static entries
-        QuestDefinition starterQuest = Quests.quest("starter_collect_logs")
-            .task(
-                TaskBuilders.retrieval("collect_logs")
-                    .item("minecraft:log", 16, 0)
-                    .consume(true)
-                    .build())
-            .reward(
-                RewardBuilders.item("starter_reward")
-                    .item("minecraft:iron_ingot", 4, 0)
-                    .build())
-            .build();
+    public static final UUID STONE_AGE_UUID = UuidConverter.decodeUuid("AAAAAAAAAAAAAAAAAAAAAA==");
 
-        ChapterDefinition chapter = Chapters.chapter("chapter_getting_started")
-            .icon("minecraft:book", 1, 0)
-            .quest(new QuestPlacementDefinition(starterQuest, 0, 0, 2, 2))
-            .build();
+    public static final List<ChapterDefinition> CHAPTERS = new ArrayList<>();
 
-        BQApi.register(chapter);
+    public static final String RESOURCE_MOD_ID = "GardenOfGrindMod";
+    public static final String RESOURCE_ROOT = "quests";
+
+    public static boolean registered;
+
+    public void loadQuestlines() {
+        // load questline, above getting started
+        initChapters();
+        register();
+    }
+
+    public ModeLoader() {}
+
+    public static void register() {
+        if (registered) {
+            return;
+        }
+        for (ChapterDefinition chapter : CHAPTERS) {
+            BQApi.register(chapter);
+        }
+        registered = true;
+    }
+
+    private static void initChapters() {
+        CHAPTERS.add(
+            Chapters.imported("AGardenInTheSky")
+                .resourceFolder(RESOURCE_MOD_ID, RESOURCE_ROOT)
+                .lineDirectory("AGardenintheSky-XmIcwZ1VTV2aWje2MH6WAQ==")
+                .uuidFromResource()
+                .orderAfter(STONE_AGE_UUID)
+                .build());
     }
 
 }

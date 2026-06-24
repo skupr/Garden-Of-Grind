@@ -6,6 +6,7 @@ public class LoadSkyblock extends ModeLoader {
 
     public LoadSkyblock() {
         GardenOfGrindMod.LOG.info("Loading Skyblock");
-
+        this.loadQuestlines();
     }
+
 }
