@@ -12,12 +12,13 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 
 @Mod(
     modid = GardenOfGrindMod.MODID,
-    version = Tags.VERSION,
+    version = GardenOfGrindMod.VERSION,
     name = "GardenOfGrindMod",
     acceptedMinecraftVersions = "[1.7.10]")
 public class GardenOfGrindMod {
 
     public static final String MODID = "GardenOfGrindMod";
+    public static final String VERSION = Tags.VERSION;
     public static final Logger LOG = LogManager.getLogger(MODID);
 
     @SidedProxy(

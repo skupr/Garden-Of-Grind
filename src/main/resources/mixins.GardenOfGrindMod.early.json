@@ -4,5 +4,11 @@
   "package": "com.LazyFlesh.GardenOfGrindMod.mixin.mixins.early",
   "refmap": "mixins.GardenOfGrindMod.refmap.json",
   "target": "@env(DEFAULT)",
-  "compatibilityLevel": "JAVA_8"
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "MixinChunkProviderServer_DisableModGeneration",
+    "MixinChunkProviderServer_DisablePopulation",
+    "MixinChunkProviderServer_DisableTerrain",
+    "MixinChunkProviderServer_DisableTerrain_EndlessIDs"
+  ]
 }
