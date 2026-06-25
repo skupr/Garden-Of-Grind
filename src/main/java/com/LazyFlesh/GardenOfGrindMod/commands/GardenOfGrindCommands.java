@@ -58,8 +58,8 @@ public class GardenOfGrindCommands extends CommandBase {
                     sender.addChatMessage(new ChatComponentText(ModeLoader.getMode()));
                     return;
                 } else if (args.length > 1) {
-                    String arg2 = args[1].toLowerCase();
-                    switch (arg2) {
+                    String arg1 = args[1].toLowerCase();
+                    switch (arg1) {
                         case "gardenofgrind", "0" -> {
                             GeneralConfig.challengeMode = 0;
                         }
@@ -78,7 +78,10 @@ public class GardenOfGrindCommands extends CommandBase {
                             return;
                         }
                     }
-                    writeConfig(GeneralConfig.challengeMode);
+                    replaceLines(
+                        "    I:challengeMode=",
+                        Integer.toString(GeneralConfig.challengeMode),
+                        GardenOfGrindMod.gogConfigFilepath);
                 }
             }
             case "dragontime": {
@@ -86,8 +89,8 @@ public class GardenOfGrindCommands extends CommandBase {
                     sender.addChatMessage(new ChatComponentText(GeneralConfig.chaosDragonTime ? "True" : "False"));
                     return;
                 } else if (args.length > 1) {
-                    String arg2 = args[1].toLowerCase();
-                    switch (arg2) {
+                    String arg1 = args[1].toLowerCase();
+                    switch (arg1) {
                         case ("true") -> {
                             GeneralConfig.chaosDragonTime = true;
 
@@ -102,7 +105,10 @@ public class GardenOfGrindCommands extends CommandBase {
                             return;
                         }
                     }
-                    writeConfig(GeneralConfig.chaosDragonTime);
+                    replaceLines(
+                        "    B:chaosDragonTime=",
+                        Boolean.toString(GeneralConfig.chaosDragonTime),
+                        GardenOfGrindMod.gogConfigFilepath);
                 }
             }
         }
@@ -120,11 +126,11 @@ public class GardenOfGrindCommands extends CommandBase {
         } else if (args.length == 2) {
             String subCommand = args[0].toLowerCase();
             if ("mode".equals(subCommand)) {
-                Stream.of("GardenOfGrind", "GardenOfGrindless", "Skyblock", "QuestlessGardenOfGrind")
+                Stream.of("GardenOfGrind", "GardenOfGrindless", "Skyblock", "QuestlessGardenOfGrind", "help")
                     .filter(s -> s.startsWith(currentArg))
                     .forEach(completions::add);
             } else if ("dragontime".equals(subCommand)) {
-                Stream.of("true", "false")
+                Stream.of("true", "false", "help")
                     .filter(s -> s.startsWith(currentArg))
                     .forEach(completions::add);
             }
@@ -144,16 +150,6 @@ public class GardenOfGrindCommands extends CommandBase {
                 "  dragontime <true/false> - Turns modded chunk population off/on. Requires server restart. (requires permission level 2)"));
     }
 
-    private void writeConfig(int newInt) {
-        replaceLines("    I:challengeMode=", Integer.toString(newInt), GardenOfGrindMod.gogConfigFilepath);
-        ConfigurationManager.save(GeneralConfig.class);
-    }
-
-    private void writeConfig(boolean newBool) {
-        replaceLines("    B:chaosDragonTime=", Boolean.toString(newBool), GardenOfGrindMod.gogConfigFilepath);
-        ConfigurationManager.save(GeneralConfig.class);
-    }
-
     public static void replaceLines(String toReplace, String replacement, Path path) {
         try {
             List<String> fileContent = new ArrayList<>(Files.readAllLines(path, StandardCharsets.UTF_8));
@@ -167,9 +163,11 @@ public class GardenOfGrindCommands extends CommandBase {
             }
 
             Files.write(path, fileContent, StandardCharsets.UTF_8);
+            ConfigurationManager.save(GeneralConfig.class);
 
         } catch (Exception e) {
-            GardenOfGrindMod.LOG.error("Problem modifying GardenOfGrind.cfg. Returning to default values.");
+            GardenOfGrindMod.LOG.warn(
+                "Problem modifying GardenOfGrind.cfg. It probably still worked well enough. It did during testing, at least.");
         }
     }
 }
