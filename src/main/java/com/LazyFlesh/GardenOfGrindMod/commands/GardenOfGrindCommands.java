@@ -145,14 +145,12 @@ public class GardenOfGrindCommands extends CommandBase {
     }
 
     private void writeConfig(int newInt) {
-        Path filepath = GardenOfGrindMod.gogConfigFilepath;
-        replaceLines("    I:challengeMode=", Integer.toString(newInt), filepath);
+        replaceLines("    I:challengeMode=", Integer.toString(newInt), GardenOfGrindMod.gogConfigFilepath);
         ConfigurationManager.save(GeneralConfig.class);
     }
 
     private void writeConfig(boolean newBool) {
-        Path filepath = GardenOfGrindMod.gogConfigFilepath;
-        replaceLines("    B:chaosDragonTime=", Boolean.toString(newBool), filepath);
+        replaceLines("    B:chaosDragonTime=", Boolean.toString(newBool), GardenOfGrindMod.gogConfigFilepath);
         ConfigurationManager.save(GeneralConfig.class);
     }
 
@@ -169,7 +167,6 @@ public class GardenOfGrindCommands extends CommandBase {
             }
 
             Files.write(path, fileContent, StandardCharsets.UTF_8);
-            ConfigurationManager.save(GeneralConfig.class);
 
         } catch (Exception e) {
             GardenOfGrindMod.LOG.error("Problem modifying GardenOfGrind.cfg. Returning to default values.");
