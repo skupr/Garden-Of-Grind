@@ -1,9 +1,10 @@
 package com.LazyFlesh.GardenOfGrindMod;
 
+import com.LazyFlesh.GardenOfGrindMod.ChallengeMode.LoadEasyGoG;
 import com.LazyFlesh.GardenOfGrindMod.ChallengeMode.LoadGoG;
 import com.LazyFlesh.GardenOfGrindMod.ChallengeMode.LoadQuestlessGoG;
+import com.LazyFlesh.GardenOfGrindMod.ChallengeMode.LoadSkyblock;
 import com.LazyFlesh.GardenOfGrindMod.commands.GardenOfGrindCommands;
-import com.gtnewhorizon.gtnhlib.config.ConfigurationManager;
 import com.hfstudio.bqapi.BQApiMod;
 
 import cpw.mods.fml.common.Loader;
@@ -20,7 +21,6 @@ public class CommonProxy {
     // preInit "Run before anything else. Read your config, create blocks, items, etc, and register them with the
     // GameRegistry." (Remove if not needed)
     public void preInit(FMLPreInitializationEvent event) {
-        ConfigurationManager.reloadConfig(GeneralConfig.class, "runtime");
 
         bqApi = Loader.isModLoaded(BQApiMod.MODID);
 
@@ -28,22 +28,28 @@ public class CommonProxy {
         if (!bqApi) GardenOfGrindMod.LOG.warn("BQApi not found. Skipping adding quests!");
 
         switch (GeneralConfig.challengeMode) {
-            /*
-             * case 1 -> new LoadEasyGoG();
-             * case 2 -> new LoadSkyblock();
-             */ // not yet implemented
+            case 1 -> new LoadSkyblock();
+            case 2 -> new LoadEasyGoG();
             case 3 -> new LoadQuestlessGoG();
 
             default -> new LoadGoG();
         }
 
         // disable config things for gog
-        // the hodgepodge mixins have been copied here, too, bceause early mixins are hard to toggle config on.
+        // the hodgepodge mixins have been portede here, because early mixins are hard to toggle config on.
         Worldgen.endAsteroids.generateEndAsteroids = false;
     }
 
     // load "Do your mod setup. Build whatever data structures you care about. Register recipes." (Remove if not needed)
-    public void init(FMLInitializationEvent event) {}
+    public void init(FMLInitializationEvent event) {
+        switch (GeneralConfig.challengeMode) {
+            case 1 -> LoadSkyblock.registerRecipes();
+            case 2 -> LoadEasyGoG.registerRecipes();
+            case 3 -> LoadQuestlessGoG.registerRecipes();
+
+            default -> LoadGoG.registerRecipes();
+        }
+    }
 
     // postInit "Handle interaction with other mods, complete your setup based on this." (Remove if not needed)
     public void postInit(FMLPostInitializationEvent event) {}

@@ -2,10 +2,10 @@ package com.LazyFlesh.GardenOfGrindMod;
 
 import com.gtnewhorizon.gtnhlib.config.Config;
 
+@Config.RequiresMcRestart
 @Config(modid = GardenOfGrindMod.MODID)
 public class GeneralConfig {
 
-    @Config.Reloadable("runtime")
     @Config.Comment("""
         The mode for the Garden of Grind addon's configuration. \s
         0 (or any undefined int) for Garden of Grind (no changes except for qb and guideNH pages),\s
@@ -16,12 +16,10 @@ public class GeneralConfig {
     @Config.RangeInt(min = 0, max = 3)
     public static int challengeMode;
 
-    @Config.RequiresMcRestart
     @Config.Comment("Toggle config when it's time to fight the chaos dragon, then restart game. Re-enables modded chunk population")
     @Config.DefaultBoolean(false)
     public static boolean chaosDragonTime;
 
-    @Config.RequiresMcRestart
     @Config.Comment("Disable gog world gen configurations. World will populate chunks as normal.")
     @Config.DefaultBoolean(false)
     public static boolean disableGOG;

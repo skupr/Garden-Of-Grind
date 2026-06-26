@@ -13,4 +13,7 @@ public class LoadQuestlessGoG extends ModeLoader {
         loadQuestlines();
     }
 
+    public static void registerRecipes() {
+        // do nothing. No recipe changes required yet.
+    }
 }

@@ -15,10 +15,6 @@ import com.gtnewhorizon.gtnhlib.config.ConfigurationManager;
 
 public class GardenOfGrindCommands extends CommandBase {
 
-    public GardenOfGrindCommands() {
-
-    }
-
     @Override
     public String getCommandName() {
         return "gog";
@@ -59,14 +55,14 @@ public class GardenOfGrindCommands extends CommandBase {
                         case "gardenofgrind", "0" -> {
                             GeneralConfig.challengeMode = 0;
                         }
-                        case "gardenofgrindless", "3" -> {
-                            GeneralConfig.challengeMode = 3;
-                        }
-                        case "skyblock", "2" -> {
+                        case "gardenofgrindless", "2" -> {
                             GeneralConfig.challengeMode = 2;
                         }
-                        case "questlessgardenofgrind", "1" -> {
+                        case "skyblock", "1" -> {
                             GeneralConfig.challengeMode = 1;
+                        }
+                        case "questlessgardenofgrind", "3" -> {
+                            GeneralConfig.challengeMode = 3;
                         }
                         default -> {
                             sender.addChatMessage(

@@ -9,4 +9,7 @@ public class LoadEasyGoG extends ModeLoader {
         this.loadQuestlines();
     }
 
+    public static void registerRecipes() {
+        // do nothing. No recipe changes required yet.
+    }
 }
