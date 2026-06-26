@@ -11,6 +11,7 @@ import static gtPlusPlus.api.recipe.GTPPRecipeMaps.simpleWasherRecipes;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 import com.LazyFlesh.GardenOfGrindMod.GardenOfGrindMod;
@@ -45,7 +46,7 @@ public class LoadSkyblock extends ModeLoader {
                 'a',
                 "craftingToolHardHammer",
                 'b',
-                new ItemStack(Blocks.gravel, 1)));
+                new ItemStack(Item.getItemFromBlock(Blocks.gravel), 1)));
 
         GameRegistry.addRecipe(
             new ShapedUniversalRecipe(
@@ -56,7 +57,7 @@ public class LoadSkyblock extends ModeLoader {
                 'a',
                 "craftingToolMortar",
                 'b',
-                new ItemStack(Blocks.sand, 1)));
+                new ItemStack(Item.getItemFromBlock(Blocks.sand), 1)));
 
         GameRegistry.addRecipe(
             new ShapedUniversalRecipe(
@@ -74,7 +75,7 @@ public class LoadSkyblock extends ModeLoader {
                 new ItemStack(Items.bucket, 1)));
 
         GTValues.RA.stdBuilder()
-            .itemInputs(Blocks.gravel, 1)
+            .itemInputs(new ItemStack(Item.getItemFromBlock(Blocks.gravel), 1))
             .itemOutputs(
                 GTOreDictUnificator.get(OrePrefixes.crushed, Materials.Magnetite, 1),
                 GTOreDictUnificator.get(OrePrefixes.crushed, Materials.Tetrahedrite, 1),
@@ -89,7 +90,7 @@ public class LoadSkyblock extends ModeLoader {
             .addTo(centrifugeRecipes);
 
         GTValues.RA.stdBuilder()
-            .itemInputs(new ItemStack(Blocks.gravel, 1))
+            .itemInputs(new ItemStack(Item.getItemFromBlock(Blocks.gravel), 1, WILDCARD))
             .itemOutputs(
                 GTOreDictUnificator.get(OrePrefixes.crushed, Materials.VanadiumMagnetite, 1),
                 GTOreDictUnificator.get(OrePrefixes.crushed, Materials.Chalcopyrite, 1),
@@ -104,7 +105,7 @@ public class LoadSkyblock extends ModeLoader {
             .addTo(centrifugeRecipes);
 
         GTValues.RA.stdBuilder()
-            .itemInputs(new ItemStack(Blocks.gravel, 1))
+            .itemInputs(new ItemStack(Item.getItemFromBlock(Blocks.gravel), 1, WILDCARD))
             .itemOutputs(
                 GTOreDictUnificator.get(OrePrefixes.crushed, Materials.Aluminium, 1),
                 GTOreDictUnificator.get(OrePrefixes.crushed, Materials.Galena, 1),
@@ -119,7 +120,7 @@ public class LoadSkyblock extends ModeLoader {
             .addTo(centrifugeRecipes);
 
         GTValues.RA.stdBuilder()
-            .itemInputs(new ItemStack(Blocks.sand, 1))
+            .itemInputs(new ItemStack(Item.getItemFromBlock(Blocks.sand), 1, WILDCARD))
             .itemOutputs(
                 GTOreDictUnificator.get(OrePrefixes.dustImpure, Materials.CassiteriteSand, 1),
                 GTOreDictUnificator.get(OrePrefixes.dust, Materials.Sulfur, 1),
@@ -134,7 +135,7 @@ public class LoadSkyblock extends ModeLoader {
             .addTo(centrifugeRecipes);
 
         GTValues.RA.stdBuilder()
-            .itemInputs(new ItemStack(Blocks.sand, 1))
+            .itemInputs(new ItemStack(Item.getItemFromBlock(Blocks.sand), 1, WILDCARD))
             .itemOutputs(
                 GTOreDictUnificator.get(OrePrefixes.dust, Materials.CertusQuartz, 1),
                 GTOreDictUnificator.get(OrePrefixes.dust, Materials.Spessartine, 1),
@@ -149,7 +150,7 @@ public class LoadSkyblock extends ModeLoader {
             .addTo(centrifugeRecipes);
 
         GTValues.RA.stdBuilder()
-            .itemInputs(new ItemStack(Blocks.gravel, 1, WILDCARD))
+            .itemInputs(new ItemStack(Item.getItemFromBlock(Blocks.gravel), 1, WILDCARD))
             .itemOutputs(GTOreDictUnificator.get(OrePrefixes.crushed, Materials.Magnetite, 2))
             .circuit(1)
             .duration(5 * TICKS)
@@ -157,7 +158,7 @@ public class LoadSkyblock extends ModeLoader {
             .addTo(simpleWasherRecipes);
 
         GTValues.RA.stdBuilder()
-            .itemInputs(new ItemStack(Blocks.sand, 1, WILDCARD))
+            .itemInputs(new ItemStack(Item.getItemFromBlock(Blocks.sand), 1, WILDCARD))
             .itemOutputs(GTOreDictUnificator.get(OrePrefixes.dustImpure, Materials.CassiteriteSand, 2))
             .circuit(1)
             .duration(5 * TICKS)
