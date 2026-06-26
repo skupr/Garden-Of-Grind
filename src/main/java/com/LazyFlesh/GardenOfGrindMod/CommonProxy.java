@@ -14,6 +14,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import gregtech.GTMod;
+import gregtech.api.enums.Mods;
 import gregtech.common.config.Worldgen;
 
 public class CommonProxy {
@@ -26,7 +27,7 @@ public class CommonProxy {
     public void preInit(FMLPreInitializationEvent event) {
 
         bqApi = Loader.isModLoaded(BQApiMod.MODID);
-        bloodMagic = Loader.isModLoaded("AWWayofTime");
+        bloodMagic = Mods.BloodMagic.isModLoaded();
 
         GardenOfGrindMod.LOG.info("I am the Garden of Grind addon mod at version " + Tags.VERSION);
         if (!bqApi) GardenOfGrindMod.LOG.warn("BQApi not found. Skipping adding quests!");
@@ -49,13 +50,19 @@ public class CommonProxy {
     // load "Do your mod setup. Build whatever data structures you care about. Register recipes." (Remove if not needed)
     public void init(FMLInitializationEvent event) {
         switch (GeneralConfig.challengeMode) {
-            case 1 -> LoadSkyblock.registerRecipes();
-            case 2 -> LoadEasyGoG.registerRecipes();
+            case 1 -> {
+                LoadSkyblock.registerRecipes();
+                if (bloodMagic) meteors.overrideConfig();
+            }
+            case 2 -> {
+                LoadEasyGoG.registerRecipes();
+                if (bloodMagic) meteors.overrideConfig();
+            }
             case 3 -> LoadQuestlessGoG.registerRecipes();
 
             default -> LoadGoG.registerRecipes();
         }
-        if (bloodMagic) meteors.overrideConfig();
+
     }
 
     // postInit "Handle interaction with other mods, complete your setup based on this." (Remove if not needed)

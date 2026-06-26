@@ -1,9 +1,12 @@
 package com.LazyFlesh.GardenOfGrindMod.ChallengeMode;
 
+import static gregtech.api.enums.Mods.AppliedEnergistics2;
 import static gregtech.api.recipe.RecipeMaps.centrifugeRecipes;
+import static gregtech.api.util.GTModHandler.getModItem;
 import static gregtech.api.util.GTRecipeBuilder.SECONDS;
 import static gregtech.api.util.GTRecipeBuilder.TICKS;
 import static gregtech.api.util.GTRecipeBuilder.WILDCARD;
+import static gtPlusPlus.api.recipe.GTPPRecipeMaps.multiblockRockBreakerRecipes;
 import static gtPlusPlus.api.recipe.GTPPRecipeMaps.simpleWasherRecipes;
 
 import net.minecraft.init.Blocks;
@@ -18,9 +21,11 @@ import com.dreammaster.recipes.ShapedUniversalRecipe;
 import cpw.mods.fml.common.registry.GameRegistry;
 import gregtech.api.enums.GTValues;
 import gregtech.api.enums.Materials;
+import gregtech.api.enums.Mods;
 import gregtech.api.enums.OrePrefixes;
 import gregtech.api.enums.TierEU;
 import gregtech.api.util.GTOreDictUnificator;
+import gregtech.common.tileentities.machines.basic.MTERockBreaker;
 
 public class LoadSkyblock extends ModeLoader {
 
@@ -131,9 +136,23 @@ public class LoadSkyblock extends ModeLoader {
             .addTo(centrifugeRecipes);
 
         GTValues.RA.stdBuilder()
+            .itemInputs(new ItemStack(Item.getItemFromBlock(Blocks.sand), 1, WILDCARD))
+            .itemOutputs(
+                GTOreDictUnificator.get(OrePrefixes.dust, Materials.CertusQuartz, 1),
+                GTOreDictUnificator.get(OrePrefixes.dust, Materials.Spessartine, 1),
+                GTOreDictUnificator.get(OrePrefixes.dust, Materials.Electrotine, 1),
+                GTOreDictUnificator.get(OrePrefixes.dust, Materials.Graphite, 1),
+                GTOreDictUnificator.get(OrePrefixes.dust, Materials.GraniticMineralSand, 1),
+                GTOreDictUnificator.get(OrePrefixes.dust, Materials.BasalticMineralSand, 1))
+            .outputChances(50_00, 30_00, 25_00, 25_00, 10_00, 10_00)
+            .circuit(2)
+            .duration(1 * SECONDS)
+            .eut(TierEU.RECIPE_MV)
+            .addTo(centrifugeRecipes);
+
+        GTValues.RA.stdBuilder()
             .itemInputs(new ItemStack(Item.getItemFromBlock(Blocks.gravel), 1, WILDCARD))
-            .itemOutputs(GTOreDictUnificator.get(OrePrefixes.crushed, Materials.Magnetite, 1))
-            .outputChances(100_00)
+            .itemOutputs(GTOreDictUnificator.get(OrePrefixes.crushed, Materials.Magnetite, 2))
             .circuit(1)
             .duration(5 * TICKS)
             .eut(TierEU.RECIPE_ULV)
@@ -141,12 +160,30 @@ public class LoadSkyblock extends ModeLoader {
 
         GTValues.RA.stdBuilder()
             .itemInputs(new ItemStack(Item.getItemFromBlock(Blocks.sand), 1, WILDCARD))
-            .itemOutputs(GTOreDictUnificator.get(OrePrefixes.dustImpure, Materials.CassiteriteSand, 1))
-            .outputChances(200_00)
+            .itemOutputs(GTOreDictUnificator.get(OrePrefixes.dustImpure, Materials.CassiteriteSand, 2))
             .circuit(1)
             .duration(5 * TICKS)
             .eut(TierEU.RECIPE_ULV)
             .addTo(simpleWasherRecipes);
+
+        if (Mods.AppliedEnergistics2.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.CertusQuartz, 1L))
+                .circuit(6)
+                .itemOutputs(getModItem(AppliedEnergistics2.ID, "tile.BlockSkyStone", 1L))
+                .duration(16 * TICKS)
+                .eut(TierEU.RECIPE_LV)
+                .addTo(multiblockRockBreakerRecipes);
+
+            MTERockBreaker.addRockBreakerRecipe(
+                b -> b.sideBlocks(Blocks.water)
+                    .anywhereBlocks(Blocks.lava)
+                    .inputItem(GTOreDictUnificator.get(OrePrefixes.dust, Materials.CertusQuartz, 1L), true)
+                    .circuit(6)
+                    .outputItem(getModItem(AppliedEnergistics2.ID, "tile.BlockSkyStone", 1L))
+                    .duration(16 * TICKS));
+
+        }
     }
 
 }
