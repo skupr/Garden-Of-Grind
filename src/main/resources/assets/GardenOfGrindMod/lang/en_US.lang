@@ -7,14 +7,14 @@ item.ThermiteBucket.name=Bucket with Thermite
 
 # Item tooltips
 
-gog.GavelDust.desc.1="Maybe sifting it in water will yield something..."
-gog.GavelDust.desc.2="Toss in water to get magnetite, chalcopyrite, and cassiterite."
-gog.GavelDust.desc.3="Toss in cauldron with water to get higher chances."
-gog.SiltDust.desc.1="Maybe tossing it in water will help..."
-gog.SiltDust.desc.2="Toss in water to make clay dust."
-gog.ThermiteBucket.desc.1="Maybe tossing it in a fire will melt it..."
-gog.ThermiteBucket.desc.2="Toss in fire to make lava bucket."
-gog.VolatileMass.desc.1="Maybe tossing it in a fire will melt it..."
-gog.VolatileMass.desc.2="Toss in fire to make flowing lava."
-gog.WateryMass.desc.1="Maybe tossing it in a fire will denature it..."
-gog.WateryMass.desc.2="Toss in fire to make a water source."
+gog.GavelDust.desc.1=Maybe sifting it in water will yield something...
+gog.GavelDust.desc.2=Toss in water to get magnetite, chalcopyrite, and cassiterite.
+gog.GavelDust.desc.3=Toss in cauldron with water to get higher chances.
+gog.SiltDust.desc.1=Maybe tossing it in water will help...
+gog.SiltDust.desc.2=Toss in water to make clay dust.
+gog.ThermiteBucket.desc.1=Maybe tossing it in a fire will melt it...
+gog.ThermiteBucket.desc.2=Toss in fire to make lava bucket.
+gog.VolatileMass.desc.1=Maybe tossing it in a fire will melt it...
+gog.VolatileMass.desc.2=Toss in fire to make flowing lava.
+gog.WateryMass.desc.1=Maybe tossing it in a fire will denature it...
+gog.WateryMass.desc.2=Toss in fire to make a water source.
