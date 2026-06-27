@@ -7,6 +7,8 @@ import com.LazyFlesh.GardenOfGrindMod.GardenOfGrindMod;
 import com.LazyFlesh.GardenOfGrindMod.loaders.items.GravelDust;
 import com.LazyFlesh.GardenOfGrindMod.loaders.items.Silt;
 import com.LazyFlesh.GardenOfGrindMod.loaders.items.ThermiteBucket;
+import com.LazyFlesh.GardenOfGrindMod.loaders.items.VolatileMass;
+import com.LazyFlesh.GardenOfGrindMod.loaders.items.WateryMass;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -14,7 +16,9 @@ public enum GoGItemList {
 
     ThermiteBucket("ThermiteBucket", new ThermiteBucket()),
     GravelDust("GravelDust", new GravelDust()),
-    SiltDust("SiltDust", new Silt())
+    SiltDust("SiltDust", new Silt()),
+    VolatileMass("VolatileMass", new VolatileMass()),
+    WateryMass("WaterMass", new WateryMass()),
 
     // because it's a pattern to use a comma, and breaking a pattern sucks
     ;

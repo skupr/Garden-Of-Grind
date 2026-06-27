@@ -6,6 +6,7 @@ import static gregtech.api.util.GTModHandler.getModItem;
 import static gregtech.api.util.GTRecipeBuilder.SECONDS;
 import static gregtech.api.util.GTRecipeBuilder.TICKS;
 import static gregtech.api.util.GTRecipeBuilder.WILDCARD;
+import static gtPlusPlus.api.recipe.GTPPRecipeMaps.mixerNonCellRecipes;
 import static gtPlusPlus.api.recipe.GTPPRecipeMaps.multiblockRockBreakerRecipes;
 import static gtPlusPlus.api.recipe.GTPPRecipeMaps.simpleWasherRecipes;
 
@@ -13,10 +14,16 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
 
 import com.LazyFlesh.GardenOfGrindMod.GardenOfGrindMod;
 import com.LazyFlesh.GardenOfGrindMod.loaders.GoGItemList;
+import com.dreammaster.item.NHItemList;
+import com.dreammaster.main.MainRegistry;
 import com.dreammaster.recipes.ShapedUniversalRecipe;
+import com.dreammaster.recipes.ShapelessUniversalRecipe;
+import com.gtnewhorizon.cropsnh.api.CropsNHItemList;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import gregtech.api.enums.GTValues;
@@ -25,6 +32,8 @@ import gregtech.api.enums.Mods;
 import gregtech.api.enums.OrePrefixes;
 import gregtech.api.enums.TierEU;
 import gregtech.api.util.GTOreDictUnificator;
+import gregtech.common.items.IDMetaTool01;
+import gregtech.common.items.MetaGeneratedTool01;
 import gregtech.common.tileentities.machines.basic.MTERockBreaker;
 
 public class LoadSkyblock extends ModeLoader {
@@ -37,47 +46,146 @@ public class LoadSkyblock extends ModeLoader {
     public static void registerRecipes() {
         GardenOfGrindMod.LOG.info("Registering recipes for Skyblock");
 
-        GameRegistry.addRecipe(
-            new ShapedUniversalRecipe(
-                GoGItemList.GravelDust.get(1),
-                "a  ",
-                "b  ",
-                "   ",
-                'a',
-                "craftingToolHardHammer",
-                'b',
-                new ItemStack(Item.getItemFromBlock(Blocks.gravel), 1)));
+        try {
+            GameRegistry.addRecipe(
+                new ShapelessUniversalRecipe(
+                    CropsNHItemList.cropSticks.get(1),
+                    new ItemStack(Items.bone, 1),
+                    new ItemStack(Items.bone, 1),
+                    new ItemStack(Items.bone, 1),
+                    new ItemStack(Items.bone, 1)));
 
-        GameRegistry.addRecipe(
-            new ShapedUniversalRecipe(
-                GoGItemList.SiltDust.get(1),
-                "a  ",
-                "b  ",
-                "   ",
-                'a',
-                "craftingToolMortar",
-                'b',
-                new ItemStack(Item.getItemFromBlock(Blocks.sand), 1)));
+            GameRegistry.addRecipe(
+                new ShapelessUniversalRecipe(
+                    CropsNHItemList.cropSticks.get(1),
+                    new ItemStack(Items.arrow, 1),
+                    new ItemStack(Items.arrow, 1),
+                    new ItemStack(Items.arrow, 1),
+                    new ItemStack(Items.arrow, 1)));
 
-        GameRegistry.addRecipe(
-            new ShapedUniversalRecipe(
-                GoGItemList.ThermiteBucket.get(1),
-                "abc",
-                "abc",
-                " e ",
-                'a',
-                GTOreDictUnificator.get(OrePrefixes.dust, Materials.Magnetite, 1),
-                'b',
-                GTOreDictUnificator.get(OrePrefixes.dust, Materials.Obsidian, 1),
-                'c',
-                GTOreDictUnificator.get(OrePrefixes.dust, Materials.Zinc, 1),
-                'e',
-                new ItemStack(Items.bucket, 1)));
+            GameRegistry.addRecipe(
+                new ShapelessUniversalRecipe(
+                    GoGItemList.VolatileMass.get(1),
+                    new ItemStack(Items.fire_charge, 1),
+                    new ItemStack(Items.coal, 1),
+                    new ItemStack(Items.bone, 1),
+                    new ItemStack(Items.bone, 1)));
+
+            GameRegistry.addRecipe(
+                new ShapedUniversalRecipe(
+                    GoGItemList.WateryMass.get(1),
+                    "aa ",
+                    "aa ",
+                    "   ",
+                    'a',
+                    NHItemList.MaceratedPlantmass.get(1)));
+
+            GameRegistry.addRecipe(
+                new ShapedUniversalRecipe(
+                    NHItemList.MaceratedPlantmass.get(1),
+                    "aaa",
+                    "a a",
+                    "aaa",
+                    'a',
+                    new ItemStack(Item.getItemFromBlock(Blocks.sapling), 1, WILDCARD)));
+            GameRegistry.addRecipe(
+                new ShapedUniversalRecipe(
+                    NHItemList.MaceratedPlantmass.get(1),
+                    "aaa",
+                    "a a",
+                    "aaa",
+                    'a',
+                    new ItemStack(Item.getItemFromBlock(Blocks.leaves), 1, WILDCARD)));
+            GameRegistry.addRecipe(
+                new ShapedUniversalRecipe(
+                    NHItemList.MaceratedPlantmass.get(1),
+                    "aaa",
+                    "a a",
+                    "aaa",
+                    'a',
+                    new ItemStack(Item.getItemFromBlock(Blocks.leaves2), 1, WILDCARD)));
+            GameRegistry.addRecipe(
+                new ShapedUniversalRecipe(
+                    NHItemList.MaceratedPlantmass.get(1),
+                    "aaa",
+                    "a a",
+                    "aaa",
+                    'a',
+                    new ItemStack(Items.reeds, 1)));
+            GameRegistry.addRecipe(
+                new ShapedUniversalRecipe(
+                    NHItemList.MaceratedPlantmass.get(1),
+                    "aaa",
+                    "a a",
+                    "aaa",
+                    'a',
+                    new ItemStack(Blocks.brown_mushroom, 1)));
+            GameRegistry.addRecipe(
+                new ShapedUniversalRecipe(
+                    NHItemList.MaceratedPlantmass.get(1),
+                    "aaa",
+                    "a a",
+                    "aaa",
+                    'a',
+                    new ItemStack(Blocks.red_mushroom, 1)));
+
+            GameRegistry.addRecipe(
+                new ShapedUniversalRecipe(
+                    MetaGeneratedTool01.INSTANCE
+                        .getToolWithStats(IDMetaTool01.HARDHAMMER.ID, 1, Materials.Flint, Materials.Wood, null),
+                    "XX ",
+                    "XXS",
+                    "XX ",
+                    'X',
+                    Items.flint,
+                    's',
+                    Items.stick));
+
+            GameRegistry.addRecipe(
+                new ShapedUniversalRecipe(
+                    GoGItemList.GravelDust.get(1),
+                    "a  ",
+                    "b  ",
+                    "   ",
+                    'a',
+                    "craftingToolHardHammer",
+                    'b',
+                    new ItemStack(Item.getItemFromBlock(Blocks.gravel), 1)));
+
+            GameRegistry.addRecipe(
+                new ShapedUniversalRecipe(
+                    GoGItemList.SiltDust.get(1),
+                    "a  ",
+                    "b  ",
+                    "   ",
+                    'a',
+                    "craftingToolMortar",
+                    'b',
+                    new ItemStack(Item.getItemFromBlock(Blocks.sand), 1)));
+
+            GameRegistry.addRecipe(
+                new ShapedUniversalRecipe(
+                    GoGItemList.ThermiteBucket.get(1),
+                    "abc",
+                    "abc",
+                    " e ",
+                    'a',
+                    GTOreDictUnificator.get(OrePrefixes.dust, Materials.Magnetite, 1),
+                    'b',
+                    GTOreDictUnificator.get(OrePrefixes.dust, Materials.Obsidian, 1),
+                    'c',
+                    GTOreDictUnificator.get(OrePrefixes.dust, Materials.Zinc, 1),
+                    'e',
+                    new ItemStack(Items.bucket, 1)));
+        } catch (Exception e) {
+            MainRegistry.LOGGER.error("A Garden of Grind Skyblock recipe went wrong:");
+            e.printStackTrace();
+        }
 
         GTValues.RA.stdBuilder()
             .itemInputs(new ItemStack(Item.getItemFromBlock(Blocks.gravel), 1))
             .itemOutputs(
-                GTOreDictUnificator.get(OrePrefixes.crushed, Materials.Magnetite, 1),
+                GTOreDictUnificator.get(OrePrefixes.crushed, Materials.YellowLimonite, 1),
                 GTOreDictUnificator.get(OrePrefixes.crushed, Materials.Tetrahedrite, 1),
                 GTOreDictUnificator.get(OrePrefixes.dustImpure, Materials.CassiteriteSand, 1),
                 GTOreDictUnificator.get(OrePrefixes.crushed, Materials.Redstone, 1),
@@ -150,16 +258,24 @@ public class LoadSkyblock extends ModeLoader {
             .addTo(centrifugeRecipes);
 
         GTValues.RA.stdBuilder()
-            .itemInputs(new ItemStack(Item.getItemFromBlock(Blocks.gravel), 1, WILDCARD))
-            .itemOutputs(GTOreDictUnificator.get(OrePrefixes.crushed, Materials.Magnetite, 2))
+            .itemOutputs(new ItemStack(Item.getItemFromBlock(Blocks.cobblestone), 1))
+            .fluidInputs(new FluidStack(FluidRegistry.WATER, 10), new FluidStack(FluidRegistry.LAVA, 0))
+            .circuit(1)
+            .duration(50 * TICKS)
+            .eut(TierEU.RECIPE_ULV)
+            .addTo(mixerNonCellRecipes);
+
+        GTValues.RA.stdBuilder()
+            .itemInputs(new ItemStack(Item.getItemFromBlock(Blocks.gravel), 2, WILDCARD))
+            .itemOutputs(GTOreDictUnificator.get(OrePrefixes.crushed, Materials.Magnetite, 3))
             .circuit(1)
             .duration(5 * TICKS)
             .eut(TierEU.RECIPE_ULV)
             .addTo(simpleWasherRecipes);
 
         GTValues.RA.stdBuilder()
-            .itemInputs(new ItemStack(Item.getItemFromBlock(Blocks.sand), 1, WILDCARD))
-            .itemOutputs(GTOreDictUnificator.get(OrePrefixes.dustImpure, Materials.CassiteriteSand, 2))
+            .itemInputs(new ItemStack(Item.getItemFromBlock(Blocks.sand), 2, WILDCARD))
+            .itemOutputs(GTOreDictUnificator.get(OrePrefixes.dustImpure, Materials.CassiteriteSand, 3))
             .circuit(1)
             .duration(5 * TICKS)
             .eut(TierEU.RECIPE_ULV)
