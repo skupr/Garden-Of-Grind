@@ -209,7 +209,7 @@ public class LoadSkyblock extends ModeLoader {
             .outputChances(50_00, 40_00, 25_00, 15_00, 10_00, 10_00)
             .circuit(2)
             .duration(1 * SECONDS)
-            .eut(TierEU.RECIPE_MV)
+            .eut(TierEU.RECIPE_MV / 2)
             .addTo(centrifugeRecipes);
 
         GTValues.RA.stdBuilder()

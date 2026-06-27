@@ -1,17 +1,30 @@
 package com.LazyFlesh.GardenOfGrindMod.loaders.items;
 
+import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.MathHelper;
+import net.minecraft.util.StatCollector;
 
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.OrePrefixes;
 import gregtech.api.util.GTOreDictUnificator;
 
 public class GravelDust extends Item {
+
+    @Override
+    public void addInformation(ItemStack iS, EntityPlayer player, List<String> info, boolean show) {
+        info.add(StatCollector.translateToLocal("gog.GavelDust.desc.1"));
+        info.add(EnumChatFormatting.DARK_GRAY + StatCollector.translateToLocal("gog.GavelDust.desc.2"));
+        info.add(EnumChatFormatting.DARK_GRAY + StatCollector.translateToLocal("gog.GavelDust.desc.3"));
+        super.addInformation(iS, player, info, show);
+    }
 
     @Override
     public boolean onEntityItemUpdate(EntityItem aItemEntity) {
