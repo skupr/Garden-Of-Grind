@@ -21,7 +21,7 @@
         "id:8": "minecraft:stick"
       },
       "countAsQuest:1": 1,
-      "desc:8": "You\u0027re in skyblock, meaning you don\u0027t have access to any ores... Or do you?\nHammering some gravel gives you gravel dust. This dust can be sifted in water.\nAnd with just a tiny bit of luck, you can get some precious ores!",
+      "desc:8": "You\u0027re in skyblock, meaning you don\u0027t have access to any ores... Or do you?\nHammering some gravel gives you gravel dust. This dust can be sifted in water.\nAnd with just a tiny bit of luck, you can get some precious ores!\n\nHint: dropping gravel dust into cauldron will get you more lucky, but at a cost of water.",
       "globalShare:1": 0,
       "icon:10": {
         "Count:3": 1,
