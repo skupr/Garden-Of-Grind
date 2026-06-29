@@ -17,18 +17,18 @@
         "id:8": "minecraft:stick"
       },
       "countAsQuest:1": 1,
-      "desc:8": "Smash sand with hammer to convert it into Silt.\nThen toss it into §1§bwater§r§r to get §7Clay Dust§r early!\n\nP.S. just for the case, cauldron works too.",
+      "desc:8": "For early water, there is the watery mass, which can be made with plant matter, which early crops will help.\n\nDrop watery mass in fire, and you get water! A good way to stop fire, isn\u0027t it?",
       "globalShare:1": 0,
       "icon:10": {
         "Count:3": 1,
-        "Damage:2": 2805,
+        "Damage:2": 0,
         "OreDict:8": "",
-        "id:8": "gregtech:gt.metaitem.01"
+        "id:8": "gogmod:WateryMass"
       },
       "isMain:1": 0,
       "isSilent:1": 0,
       "lockedProgress:1": 0,
-      "name:8": "Simple Clay!",
+      "name:8": "Water for the masses",
       "notification_duration:5": -1.0,
       "notification_effect:3": -1,
       "notification_fade_in:5": -1.0,
@@ -44,7 +44,7 @@
       "notification_title:8": "",
       "notification_title_scale:5": -1.0,
       "particle_count:3": -1,
-      "questLogic:8": "OR",
+      "questLogic:8": "AND",
       "repeatTime:3": -1,
       "repeat_relative:1": 1,
       "simultaneous:1": 0,
@@ -54,8 +54,8 @@
       "visibility:8": "NORMAL"
     }
   },
-  "questIDHigh:4": -4743456537578353330,
-  "questIDLow:4": -7291979518837063590,
+  "questIDHigh:4": 4140246801317776745,
+  "questIDLow:4": -7457310422845678156,
   "rewards:9": {
     "0:10": {
       "ignoreDisabled:1": 0,
@@ -63,10 +63,10 @@
       "rewardID:8": "bq_standard:item",
       "rewards:9": {
         "0:10": {
-          "Count:3": 10,
+          "Count:3": 4,
           "Damage:2": 0,
           "OreDict:8": "",
-          "id:8": "minecraft:sand"
+          "id:8": "gogmod:WateryMass"
         }
       }
     }
@@ -82,10 +82,10 @@
       "requireOnlyOneItem:1": 0,
       "requiredItems:9": {
         "0:10": {
-          "Count:3": 1,
+          "Count:3": 4,
           "Damage:2": 0,
           "OreDict:8": "",
-          "id:8": "gogmod:SiltDust"
+          "id:8": "dreamcraft:MaceratedPlantmass"
         }
       },
       "taskID:8": "bq_standard:retrieval"
@@ -101,9 +101,9 @@
       "requiredItems:9": {
         "0:10": {
           "Count:3": 1,
-          "Damage:2": 2805,
+          "Damage:2": 0,
           "OreDict:8": "",
-          "id:8": "gregtech:gt.metaitem.01"
+          "id:8": "gogmod:WateryMass"
         }
       },
       "taskID:8": "bq_standard:retrieval"
