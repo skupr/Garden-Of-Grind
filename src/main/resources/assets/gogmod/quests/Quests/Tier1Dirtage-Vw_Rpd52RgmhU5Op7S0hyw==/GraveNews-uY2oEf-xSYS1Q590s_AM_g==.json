@@ -17,7 +17,7 @@
         "id:8": "minecraft:stick"
       },
       "countAsQuest:1": 1,
-      "desc:8": "As you may notice, dying spawns a grave where you die, or at y\u003d3 if you die in the void.\n\nThese graves are really hard to break (unless you\u0027re the owner), extremely blast resistant, and contain all your items, a head, and sometimes human flesh.\n\n[warn]If the light level is too low, and there is nothing obstructing the grave up to 2 and a bit blocks above it, unarmed skeletons will spawn.[/warn]",
+      "desc:8": "As you may notice, dying spawns a grave where you die, or at y\u003d6 if you die in the void.\n\nThese graves are really hard to break (unless you\u0027re the owner), extremely blast resistant, and contain all your items, a head, and sometimes human flesh.\n\n[warn]If the light level is too low, and there is nothing obstructing the grave up to 2 and a bit blocks above it, unarmed skeletons will spawn.[/warn]",
       "globalShare:1": 0,
       "icon:10": {
         "Count:3": 1,
